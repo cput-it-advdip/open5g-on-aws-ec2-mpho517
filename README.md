@@ -52,3 +52,8 @@ sudo cat /var/lib/rancher/k3s/server/node-token
 
 ## Deployment Evidence
 
+### Multi-Node Cluster Status
+![Nodes](img/nodes_status.png)
+
+### System Pods Status
+![Pods](img/pods_status.png)
