@@ -36,9 +36,9 @@ The following AWS EC2 specifications were used to ensure a stable hybrid environ
 
 ### 1. Provisioning & Security
 Configured an AWS VPC with a Security Group allowing:
-* `6443/tcp`: Kubernetes API Server
-* `8472/udp`: Flannel VXLAN
-* `10250/tcp`: Kubelet metrics
+* 6443/tcp: Kubernetes API Server
+* 8472/udp: Flannel VXLAN
+* 10250/tcp: Kubelet metrics
 
 ### 2. K3s Server Setup (Control Plane)
 Run the following on the Server instance:
@@ -56,4 +56,5 @@ sudo cat /var/lib/rancher/k3s/server/node-token
 ![Nodes](img/nodes_status.png)
 
 ### System Pods Status
+
 ![Pods](img/pods_status.png)
