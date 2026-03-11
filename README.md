@@ -51,7 +51,4 @@ sudo cat /var/lib/rancher/k3s/server/node-token
 
 
 ## Deployment Evidence
-<img width="948" height="208" alt="nodes_status" src="https://github.com/user-attachments/assets/bbfcf99a-6827-4a76-a04c-4e34ec232491" />
 
-
-<img width="947" height="339" alt="pods_status" src="https://github.com/user-attachments/assets/ec83b60c-080a-45a0-bd78-1c4f806a24a7" />
