@@ -40,26 +40,8 @@ Configured an AWS VPC with a Security Group allowing:
 * `8472/udp`: Flannel VXLAN
 * `10250/tcp`: Kubelet metrics
 
-### 2. K3s Server Setup (Control Plane)
-Run the following on the Server instance:
-```bash
-curl -sfL [https://get.k3s.io](https://get.k3s.io) | sh -
-# Verify installation
-sudo k3s kubectl get nodes
-# Extract the node token for agent registration
-sudo cat /var/lib/rancher/k3s/server/node-token
 
-
-## Deployment Evidence
-
-### Multi-Node Cluster Status
-![Nodes](img/nodes_status.png)
-
-### System Pods Status
-![Pods](img/pods_status.png)
-
-
-# 4. Technical Reflection
+### 4. Technical Reflection
 
 ## 4.1 Lessons Learned and Technical Growth
 This assignment provided a comprehensive look into the lifecycle of a cloud-native deployment. I learned that the functionality of a Kubernetes cluster is deeply dependent on the underlying infrastructure's networking configuration. Beyond just running installation scripts, I gained hands-on experience in managing **AWS Security Groups**, **VPC routing**, and **secure node-to-node authentication** using cluster tokens. Understanding the distinction between the **Control Plane (Master)** and the **Agent (Worker)** has clarified how distributed systems maintain high availability and state across multiple virtual machines.
