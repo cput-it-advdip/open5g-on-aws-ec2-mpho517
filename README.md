@@ -1,62 +1,53 @@
-\# K3s Deployment on AWS - Graduate Trainee Assignment 1
-
-\*\*Student Name:\*\* \[Mpho Quinton Swele]
-
-\*\*Student Number:\*\* \[231001487]
-
-
+# Assignment 1: K3s Deployment on AWS
+**Name:** Mpho Quinton Swele  
+**Student Number:** [Your Student Number]  
+**Course:** Advanced Diploma in IT (Communication Networks)
 
 ---
 
+## 🏗 Architecture Explanation
+### What is K3s?
+K3s is a highly available, certified Kubernetes distribution designed for low-resource environments such as Edge, IoT, and 5G infrastructures. It is packaged as a single binary (<100MB) by removing legacy, alpha, and non-default features found in standard upstream Kubernetes.
 
+### Key Components
+* **Control Plane:** The brain of the cluster, containing the API Server (entry point), Scheduler (assigns pods), and Controller Manager (maintains desired state).
+* **Agents (Worker Nodes):** The hosts where the actual containerized workloads run.
+* **Container Runtime:** Uses **containerd** as a lightweight, industry-standard runtime.
+* **CNI (Flannel):** Manages the L3 networking fabric for Pod-to-Pod communication.
+* **Kine:** A shim that allows K3s to use **SQLite** (embedded) instead of the resource-heavy etcd, perfect for edge deployments.
+* **ServiceLB & Traefik:** Built-in Load Balancer and Ingress controller for exposing services.
 
-\## 1. Architecture Explanation
+---
 
-K3s is a lightweight Kubernetes distribution. It is ideal for this deployment because it replaces the heavy etcd datastore with \*\*SQLite\*\*, reducing the memory overhead on our AWS instances.
+## 🖥 System Requirements
+The following AWS EC2 specifications were used to ensure a stable hybrid environment:
 
-\* \*\*Control Plane:\*\* Hosted on t3.medium.
+| Requirement | Control Plane (Server) | Agent (Worker) |
+| :--- | :--- | :--- |
+| **Instance Type** | t3.medium | t3.small |
+| **vCPU** | 2 | 1 |
+| **RAM** | 4 GB | 2 GB |
+| **Storage** | 20 GB gp3 SSD | 20 GB gp3 SSD |
+| **OS** | Ubuntu 22.04 LTS | Ubuntu 22.04 LTS |
 
-\* \*\*Worker Nodes:\*\* Hosted on t3.micro.
+---
 
-\* \*\*Networking (CNI):\*\* Uses \*\*Flannel\*\* (VXLAN) for pod communication.
+## 🛠 Installation Steps & Commands
 
-\* \*\*Ingress:\*\* Default \*\*Traefik\*\* controller for traffic management.
+### 1. Provisioning & Security
+Configured an AWS VPC with a Security Group allowing:
+* `6443/tcp`: Kubernetes API Server
+* `8472/udp`: Flannel VXLAN
+* `10250/tcp`: Kubelet metrics
 
-
-
-\## 2. Infrastructure Setup
-
-I provisioned two Ubuntu 22.04 EC2 instances. The Security Group was configured with:
-
-\* \*\*TCP 6443\*\*: K3s API Server
-
-\* \*\*UDP 8472\*\*: Flannel VXLAN (Required for node-to-node pod traffic)
-
-\* \*\*TCP 22\*\*: SSH Management
-
-
-
-\## 3. Evidence of Deployment
-
-!\[Nodes Status](./img/nodes\_status.png)
-
-!\[Pods Status](./img/pods\_status.png)
-
-!\[AWS Console](./img/aws\_console.png)
-
-
-
-\## 4. Technical Reflection
-
-\### What I Learned
-
-During this Graduate Trainee assignment, I learned that setting up Kubernetes isn't just about the software, but the underlying networking. I initially struggled with the worker node joining the cluster until I realized the Flannel CNI requires specific UDP ports (8472) to be open in the AWS Security Group.
-
-
-
-\### 5G and Scalability
-
-K3s is highly relevant to \*\*5G Cloud-Native\*\* concepts. In 5G Edge computing, hardware is often resource-constrained. K3s provides a "light" orchestration layer to manage containerized network functions (CNFs) efficiently. Virtualization provides the hardware isolation, while K3s provides the scalability needed for high-demand 5G services.
+### 2. K3s Server Setup (Control Plane)
+Run the following on the Server instance:
+```bash
+curl -sfL [https://get.k3s.io](https://get.k3s.io) | sh -
+# Verify installation
+sudo k3s kubectl get nodes
+# Extract the node token for agent registration
+sudo cat /var/lib/rancher/k3s/server/node-token
 
 
 ## Deployment Evidence
@@ -65,4 +56,5 @@ K3s is highly relevant to \*\*5G Cloud-Native\*\* concepts. In 5G Edge computing
 ![Nodes](img/nodes_status.png)
 
 ### System Pods Status
+
 ![Pods](img/pods_status.png)
