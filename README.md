@@ -41,6 +41,26 @@ Configured an AWS VPC with a Security Group allowing:
 * `10250/tcp`: Kubelet metrics
 
 
+
+### 3. Evidence of Deployment
+
+## 3.1 Cluster Node Status (Master and Worker)
+This screenshot confirms that the K3s cluster is operational. It shows both the Control Plane and the Worker node in a **Ready** status, running the latest K3s version.
+![Nodes Status](img/nodes_status.png)
+
+## 3.2 System Pods and Networking Status
+The following output shows all system-level pods (CoreDNS, Metrics Server, and Traefik) running across the namespace. This confirms that the internal networking (Flannel) and Ingress (Traefik) are fully functional.
+![Pods Status](img/pods_status.png)
+
+## 3.3 AWS EC2 Management Console
+This view from the AWS Console shows the two active EC2 instances (**t3.medium** for the Master and **t3.micro** for the Worker) in the `running` state within the `us-east-1` region.
+![AWS Console](img/aws_console.png)
+
+## 3.4 Terminal Installation Output
+This screenshot captures the final terminal output after running the K3s installation and join commands, showing the successful communication between the local PowerShell environment and the AWS cloud instances.
+![Terminal Output](img/terminal_output.png)
+
+
 ### 4. Technical Reflection
 
 ## 4.1 Lessons Learned and Technical Growth
