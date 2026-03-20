@@ -1,6 +1,6 @@
 # Assignment 1: K3s Deployment on AWS
 **Name:** Mpho Quinton Swele  
-**Student Number:** [Your Student Number]  
+**Student Number:** 231001487  
 **Course:** Advanced Diploma in IT (Communication Networks)
 
 ---
