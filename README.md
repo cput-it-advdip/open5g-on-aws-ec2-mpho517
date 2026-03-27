@@ -50,10 +50,10 @@ curl -sfL [https://get.k3s.io](https://get.k3s.io) | sh -
 
 Step 3: Joining Peer Masters (Master 2 & 3)
 
-# Example for Master-2
+# For Master-2
 sudo tee /etc/rancher/k3s/config.yaml <<EOF
 server: [https://172.31.18.87:6443](https://172.31.18.87:6443)
-token: <SECRET_TOKEN>
+token: <K1003da2ee62271d04837a82fd69cdd9a7159ff2aba64627b138ec3ce1237edbb75::server:0f9f0d5e86f9a4a0af29030371ae1768>
 node-ip: 172.31.24.255
 disable: [servicelb, traefik]
 EOF
