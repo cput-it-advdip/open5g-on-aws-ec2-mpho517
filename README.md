@@ -60,7 +60,7 @@ EOF
 curl -sfL [https://get.k3s.io](https://get.k3s.io) | sh -s - server
 
 ```
-# 3. Evidence of Deployment
+# 3. Evidence of Deployment.
 
 ## 3.1 AWS Console View
 
