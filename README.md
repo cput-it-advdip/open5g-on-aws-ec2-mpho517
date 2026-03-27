@@ -62,11 +62,20 @@ curl -sfL [https://get.k3s.io](https://get.k3s.io) | sh -s - server
 ```
 ## 3. Evidence of Deployment
 
-### 3.1 Cluster Node Status
-Evidence showing all three nodes in 'Ready' status with control-plane roles.
+### 3.1 AWS Console View
+
+<img width="1919" height="525" alt="Screenshot 2026-03-27 152305" src="https://github.com/user-attachments/assets/2cb2b381-c8e8-4c79-862b-2ffb7f7a65a4" />
+
+Verification of three t3.large instances running in the us-east-1 region.
 
 ### 3.2 System Pods Health
+
+<img width="957" height="985" alt="Screenshot 2026-03-27 151407" src="https://github.com/user-attachments/assets/009e42de-048d-43ba-ba9e-f9488f1dc970" />
+
 Showing CoreDNS, Metrics-Server, and Local-Path-Provisioner running across the namespace.
 
-### 3.3 AWS Console View
-Verification of three t3.large instances running in the us-east-1 region.
+### 3.3 Cluster Node Status
+
+<img width="951" height="985" alt="Screenshot 2026-03-27 150147" src="https://github.com/user-attachments/assets/49d3178a-d2b8-4f4b-95ef-3bb146001247" />
+
+Evidence showing all three nodes in 'Ready' status with control-plane roles.
