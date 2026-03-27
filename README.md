@@ -5,7 +5,7 @@
 
 ---
 
-## 1. System Requirements & Architecture
+# 1. System Requirements & Architecture
 This deployment utilizes a **High-Availability (HA)** control plane with embedded **etcd**. Unlike a standard K3s setup with a single server and multiple agents, this architecture uses three server nodes to ensure fault tolerance.
 
 ### System Specifications (per node)
@@ -25,7 +25,7 @@ This deployment utilizes a **High-Availability (HA)** control plane with embedde
 
 ---
 
-## 2. Installation Steps
+# 2. Installation Steps
 
 ### Step 1: Networking & Security Group
 Configured an AWS Security Group with the following ingress rules:
@@ -35,7 +35,7 @@ Configured an AWS Security Group with the following ingress rules:
 - **UDP 8472**: Flannel VXLAN (Internal)
 - **TCP 30000-32767**: NodePort Services
 
-### Step 2: Provisioning Master-1
+# Step 2: Provisioning Master-1
 ```bash
 sudo mkdir -p /etc/rancher/k3s
 sudo tee /etc/rancher/k3s/config.yaml <<EOF
@@ -60,21 +60,21 @@ EOF
 curl -sfL [https://get.k3s.io](https://get.k3s.io) | sh -s - server
 
 ```
-## 3. Evidence of Deployment
+# 3. Evidence of Deployment
 
-### 3.1 AWS Console View
+## 3.1 AWS Console View
 
 <img width="1919" height="525" alt="Screenshot 2026-03-27 152305" src="https://github.com/user-attachments/assets/2cb2b381-c8e8-4c79-862b-2ffb7f7a65a4" />
 
 Verification of three t3.large instances running in the us-east-1 region.
 
-### 3.2 System Pods Health
+## 3.2 System Pods Health
 
 <img width="957" height="985" alt="Screenshot 2026-03-27 151407" src="https://github.com/user-attachments/assets/009e42de-048d-43ba-ba9e-f9488f1dc970" />
 
 Showing CoreDNS, Metrics-Server, and Local-Path-Provisioner running across the namespace.
 
-### 3.3 Cluster Node Status
+## 3.3 Cluster Node Status
 
 <img width="951" height="985" alt="Screenshot 2026-03-27 150147" src="https://github.com/user-attachments/assets/49d3178a-d2b8-4f4b-95ef-3bb146001247" />
 
