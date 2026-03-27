@@ -88,12 +88,12 @@ Evidence showing all three nodes in 'Ready' status with control-plane roles.
 
 To validate the cluster's ability to schedule and route traffic, a standard Nginx workload was deployed and exposed via a NodePort service.
 
-Service Configuration:
+- Service Configuration:
 
-Deployment Name: web-app
+- Deployment Name: web-app
 
-Service Type: NodePort
+- Service Type: NodePort
 
-Internal Cluster IP: 10.43.117.155
+- Internal Cluster IP: 10.43.117.155
 
-External Access Port: 30474
+- External Access Port: 30474
