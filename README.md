@@ -103,16 +103,16 @@ To validate the cluster's ability to schedule and route traffic, a standard Ngin
 
 ## Learning Outcomes
 
-### Through this assignment, I gained a deep practical understanding of Cloud-Native Infrastructure. Moving beyond theory, I learned how Kubernetes handles state via etcd quorum. I realized that the "magic" of Kubernetes relies heavily on underlying network stability, specifically the ability for nodes to resolve each other via private IP addressing within a VPC.
+Through this assignment, I gained a deep practical understanding of Cloud-Native Infrastructure. Moving beyond theory, I learned how Kubernetes handles state via etcd quorum. I realized that the "magic" of Kubernetes relies heavily on underlying network stability, specifically the ability for nodes to resolve each other via private IP addressing within a VPC.
 
 ## Challenges & Resolutions
 
-### The primary challenge encountered was a Service Start Failure during the join process for the second and third master nodes. The K3s service initially failed because the node-ip in the configuration file did not match the assigned AWS private IP. I resolved this by performing a "Deep Clean" (running the uninstall script and manually removing /var/lib/rancher/k3s) and ensuring the config.yaml strictly followed the internal AWS addressing schema. Additionally, I used nc -zv to troubleshoot and confirm that the AWS Security Group was correctly allowing traffic on port 6443.
+The primary challenge encountered was a Service Start Failure during the join process for the second and third master nodes. The K3s service initially failed because the node-ip in the configuration file did not match the assigned AWS private IP. I resolved this by performing a "Deep Clean" (running the uninstall script and manually removing /var/lib/rancher/k3s) and ensuring the config.yaml strictly followed the internal AWS addressing schema. Additionally, I used nc -zv to troubleshoot and confirm that the AWS Security Group was correctly allowing traffic on port 6443.
 
 ## Relation to 5G and Production K8s
 
-### K3s is highly relevant to 5G and Edge Computing. In a 5G cloud-native environment, Multi-access Edge Computing (MEC) requires small-footprint clusters to run near the user. K3s provides the necessary orchestration while consuming minimal resources. Furthermore, the HA architecture deployed here mirrors production environments where high availability is non-negotiable to prevent service downtime.
+K3s is highly relevant to 5G and Edge Computing. In a 5G cloud-native environment, Multi-access Edge Computing (MEC) requires small-footprint clusters to run near the user. K3s provides the necessary orchestration while consuming minimal resources. Furthermore, the HA architecture deployed here mirrors production environments where high availability is non-negotiable to prevent service downtime.
 
 ## Scalability via Virtualization and Containerization
 
-### Virtualization allows us to partition AWS hardware into discrete EC2 instances, providing the "compute" layer. Containerization (via containerd/Docker) then allows us to package applications with their dependencies. Together, they enable Horizontal Scaling; if my Nginx workload experiences high traffic, Kubernetes can instantly spin up more pods across the three nodes, a feat that would be impossible with traditional monolithic hardware setups.
+Virtualization allows us to partition AWS hardware into discrete EC2 instances, providing the "compute" layer. Containerization (via containerd/Docker) then allows us to package applications with their dependencies. Together, they enable Horizontal Scaling; if my Nginx workload experiences high traffic, Kubernetes can instantly spin up more pods across the three nodes, a feat that would be impossible with traditional monolithic hardware setups.
