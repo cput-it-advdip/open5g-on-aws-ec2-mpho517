@@ -58,3 +58,14 @@ node-ip: 172.31.24.255
 disable: [servicelb, traefik]
 EOF
 curl -sfL [https://get.k3s.io](https://get.k3s.io) | sh -s - server
+
+```
+3. Evidence of Deployment
+3.1 Cluster Node Status
+Evidence showing all three nodes in 'Ready' status with control-plane roles.
+
+3.2 System Pods Health
+Showing CoreDNS, Metrics-Server, and Local-Path-Provisioner running across the namespace.
+
+3.3 AWS Console View
+Verification of three t3.large instances running in the us-east-1 region.
