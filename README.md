@@ -79,3 +79,21 @@ Showing CoreDNS, Metrics-Server, and Local-Path-Provisioner running across the n
 <img width="951" height="985" alt="Screenshot 2026-03-27 150147" src="https://github.com/user-attachments/assets/49d3178a-d2b8-4f4b-95ef-3bb146001247" />
 
 Evidence showing all three nodes in 'Ready' status with control-plane roles.
+
+
+## 3.4 Workload and Service Exposure
+
+<img width="955" height="1030" alt="Screenshot 2026-03-27 151047" src="https://github.com/user-attachments/assets/ef5b48f8-8caf-415f-a0a2-9b49e90df777" />
+
+
+To validate the cluster's ability to schedule and route traffic, a standard Nginx workload was deployed and exposed via a NodePort service.
+
+Service Configuration:
+
+Deployment Name: web-app
+
+Service Type: NodePort
+
+Internal Cluster IP: 10.43.117.155
+
+External Access Port: 30474
